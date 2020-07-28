@@ -1,0 +1,34 @@
+---
+# -------------------------------------------------------------------------------
+# perl 7 ready config file
+# -------------------------------------------------------------------------------
+#
+# 1. Any lines starting with (e.g.) '#>' will be removed
+#
+# 2 The PREAMBLE text (each line starting with '#>' will be inserted at the start
+#
+# 3. Any line matching "^ (#)? (use|no) pragma ;" will get removed
+#
+# 4. The new PRAGMAS will get inserted
+#
+# 5. Check you scripts ... check if this breaks things ... thats whi I commented out
+#		the 'use open' pragma ! Oh, and 'no feature indirect' isn't in v5.30
+# -------------------------------------------------------------------------------
+
+COMMENT_PREFIX: '#>'
+
+PREAMBLE: |
+  #> ---------------------------------------------------------------------------
+  #> Copyright 2020 Your Name All Rights Reserved - you@example.com
+
+PRAGMAS: |
+  #> ---------------------------------------------------------------------------
+  #  no feature qw(indirect);
+  #  use open qw(:std :utf8);
+  use utf8;
+  use strict;
+  use warnings;
+  use feature qw(signatures);
+  no warnings qw(experimental::signatures);
+  #> ---------------------------------------------------------------------------
+
