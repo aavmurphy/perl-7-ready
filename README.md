@@ -14,8 +14,10 @@ Gotchas:
 
 ## use signatures
 
-`sub fred { 
-   my ( $self, $a ) = @_;` 
+```
+sub fred { 
+   my ( $self, $a ) = @_;
+``` 
    
 becomes 
 
