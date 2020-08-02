@@ -1,8 +1,14 @@
 # Perl 7 Ready
 
-Global edit your scripts, packages and .cgi's to make them Perl 7 ready !
+Global edit your Perl scripts, packages and .cgi's to make them Perl 7 ready !
 
-## no feature qw( indirect )
+* Insert the Perl 7 Ready Pragma in every script/package, e.g. `use utf8; use strict`
+* Edit the code to use new features: -indirection (little change), +signatures (big improvement)
+* Optional Extras: While you're editing every file, remove windows \r and insert a standard copryright section at the top
+
+OK here we go.
+
+## Code Change: no feature qw( indirect )
 
 `new fred( $a )` becomes `fred->new( $a )`
 
@@ -12,7 +18,7 @@ Gotchas:
 * look out for the word new in inlined HTML
 * need v5.32 for this pragma, the `package->new()` works, just not the pragma, so you r code is fixed, but the pragma's commented out.
 
-## use signatures
+## Code change: use signatures
 
 ```
 sub fred { 
@@ -30,7 +36,7 @@ Gotchas
 * look out for optional args, it should be e.g. `sub fred ( $needed, $optional="" )`
 * if you do something like `sub fred { $self = shift; my ($x) = @_` my regex wont work -you'll have to hack the code
 
-#  use open qw(:std :utf8);
+#  Held back for now: use open qw(:std :utf8);
 
 This broke everything for me, I suspect cos everything was double (de)coded. More thought needed!
 
@@ -39,17 +45,17 @@ So this pragma is commented out by default
 Gotchas:
 * use open is universal, its a per (all files/packages) thing, have it in 1 package, then its everywhere.
 
-# use strict; use warnings;
+# Enforced Pragmas: use strict; use warnings;
 
 Hopefully not contraversial. This script just makes sure these 2 pragmas are there.
 
-# preamble
+# Optional: insert a preamble (comments at the start)
 
 This is an extra, a series of comments at the start of each file, e.g. `# (c) you, your website, your email`
 
-# some extras
+# Optional: fix windows line endings
 
-While editing every file... Fix line endings (remove \m chars) - comment this out of the code if you don't want it 
+While editing every file... Fix line endings (remove \r (^M) chars) - comment this out of the code if you don't want it 
 
 # See
 
