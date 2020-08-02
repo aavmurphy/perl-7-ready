@@ -36,7 +36,7 @@ Gotchas
 * look out for optional args, it should be e.g. `sub fred ( $needed, $optional="" )`
 * if you do something like `sub fred { $self = shift; my ($x) = @_` my regex wont work -you'll have to hack the code
 
-#  Pragma held back for now: use open qw(:std :utf8);
+##  Pragma held back for now: use open qw(:std :utf8);
 
 This broke everything for me, I suspect cos everything was double (de)coded. More thought needed!
 
@@ -45,21 +45,37 @@ So this pragma is commented out by default
 Gotchas:
 * use open is universal, its a per (all files/packages) thing, have it in 1 package, then its everywhere.
 
-# Insert Perl 7 Pragmas
+## Insert Perl 7 Pragmas
 
 `use utf8; use strict;l use warnings`
 
 Hopefully not contraversial. This script just makes sure these pragmas are there.
 
-# Optional: insert a preamble (comments at the start)
+## Optional: insert a preamble (comments at the start)
 
 This is an extra, a series of comments at the start of each file, e.g. `# (c) you, your website, your email`
 
-# Optional: fix windows line endings
+## Optional: fix windows line endings
 
 While editing every file... Fix line endings (remove \r (^M) chars) - comment this out of the code if you don't want it 
 
-# See Also
+## See Also
 
 `perltidy`
+
+# How to use
+
+copy `perl7ready.conf.example` to `perl7ready.conf` and edit it
+
+Then run the script on a smaple script of yours
+
+`perl7ready /dir /another-dir`
+
+You'll probably have to tweak what I've done, especially to auto-fix signatures
+
+You'll have to test you code, especially with the signature changes, e.g. its `sub new ($class)` not `sub new ()`
+
+# Feedback
+
+Welcome
 
